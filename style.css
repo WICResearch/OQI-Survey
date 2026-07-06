@@ -1,50 +1,82 @@
 body {
 font-family: Arial, sans-serif;
 background: #f5f7fa;
+color: #222;
 margin: 0;
 padding: 0;
-color: #222;
 }
 
 .container {
-max-width: 700px;
+max-width: 850px;
 margin: 40px auto;
 background: white;
 padding: 30px;
-border-radius: 12px;
-box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+border-radius: 14px;
+box-shadow: 0 2px 14px rgba(0,0,0,0.12);
 }
 
 h1 {
 color: #4b2e83;
+margin-bottom: 10px;
+}
+
+h2 {
+color: #4b2e83;
+margin-top: 35px;
+border-bottom: 2px solid #eee;
+padding-bottom: 8px;
 }
 
 p {
 line-height: 1.5;
 }
 
+section {
+margin-bottom: 30px;
+}
+
 label {
 display: block;
-margin-top: 20px;
+margin-top: 18px;
 font-weight: bold;
 }
 
-input,
+input[type="text"],
 select,
 textarea {
 width: 100%;
 padding: 12px;
 margin-top: 6px;
-border: 1px solid #ccc;
+border: 1px solid #bbb;
 border-radius: 8px;
 font-size: 1rem;
 box-sizing: border-box;
 }
 
+textarea {
+resize: vertical;
+}
+
+.checkbox-group {
+margin-top: 10px;
+padding: 12px;
+background: #f8f8fb;
+border-radius: 8px;
+}
+
+.checkbox-group label {
+font-weight: normal;
+margin-top: 10px;
+}
+
+.question {
+margin-bottom: 12px;
+}
+
 button {
 margin-top: 25px;
 width: 100%;
-padding: 14px;
+padding: 15px;
 background: #4b2e83;
 color: white;
 border: none;
@@ -60,4 +92,5 @@ background: #351f63;
 #message {
 margin-top: 20px;
 font-weight: bold;
+text-align: center;
 }
