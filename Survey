@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WIC OQI Staff Survey</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+<h1>WIC OQI Staff Survey</h1>
+<p>
+This survey is intended to gather staff feedback on current needs,
+participant barriers, training, communication, and future OQI priorities.
+</p>
+
+<form id="surveyForm">
+
+<label for="role">Primary Role</label>
+<select id="role" name="role" required>
+<option value="">Select one</option>
+<option>Local Agency Director</option>
+<option>Nutritionist/RD</option>
+<option>CPA</option>
+<option>Breastfeeding Staff</option>
+<option>Outreach Staff</option>
+<option>Office Associate</option>
+<option>State Agency Staff</option>
+<option>Other</option>
+</select>
+
+<label for="agency">Agency or Work Area</label>
+<input type="text" id="agency" name="agency" required />
+
+<label for="trainingRating">Training currently meets staff needs.</label>
+<select id="trainingRating" name="trainingRating" required>
+<option value="">Select one</option>
+<option>Strongly Agree</option>
+<option>Agree</option>
+<option>Neutral</option>
+<option>Disagree</option>
+<option>Strongly Disagree</option>
+</select>
+
+<label for="communicationRating">Communication between SA and LA staff is effective.</label>
+<select id="communicationRating" name="communicationRating" required>
+<option value="">Select one</option>
+<option>Strongly Agree</option>
+<option>Agree</option>
+<option>Neutral</option>
+<option>Disagree</option>
+<option>Strongly Disagree</option>
+</select>
+
+<label for="participantBarriers">
+What barriers do participants face when accessing WIC?
+</label>
+<textarea id="participantBarriers" name="participantBarriers" rows="4"></textarea>
+
+<label for="oqiPriorities">
+What should OQI focus on over the next 1–3 years?
+</label>
+<textarea id="oqiPriorities" name="oqiPriorities" rows="4"></textarea>
+
+<label for="additionalFeedback">
+Additional feedback or suggestions
+</label>
+<textarea id="additionalFeedback" name="additionalFeedback" rows="4"></textarea>
+
+<button type="submit">Submit Survey</button>
+
+<p id="message"></p>
+
+</form>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
