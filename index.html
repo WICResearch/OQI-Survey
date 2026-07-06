@@ -11,65 +11,178 @@
 <main class="container">
 <h1>WIC OQI Staff Survey</h1>
 <p>
-This survey is intended to gather staff feedback on current needs,
-participant barriers, training, communication, and future OQI priorities.
+This survey is intended to gather staff feedback on current needs for the State Agency,
+Local Agencies, and WIC participants.
 </p>
 
 <form id="surveyForm">
 
-<label for="role">Primary Role</label>
-<select id="role" name="role" required>
+<section>
+<h2>Section 1: About You</h2>
+
+<label>What is your primary role?</label>
+<select name="primaryRole" required>
 <option value="">Select one</option>
 <option>Local Agency Director</option>
 <option>Nutritionist/RD</option>
 <option>CPA</option>
-<option>Breastfeeding Staff</option>
-<option>Outreach Staff</option>
+<option>Breastfeeding Peer Counselor</option>
+<option>Breastfeeding Coordinator</option>
+<option>Outreach</option>
 <option>Office Associate</option>
-<option>State Agency Staff</option>
+<option>State Agency</option>
 <option>Other</option>
 </select>
 
-<label for="agency">Agency or Work Area</label>
-<input type="text" id="agency" name="agency" required />
+<label>Which local agency do you work for?</label>
+<input type="text" name="localAgency" />
 
-<label for="trainingRating">Training currently meets staff needs.</label>
-<select id="trainingRating" name="trainingRating" required>
+<label>How many years have you worked in WIC?</label>
+<select name="yearsInWIC" required>
 <option value="">Select one</option>
-<option>Strongly Agree</option>
-<option>Agree</option>
-<option>Neutral</option>
-<option>Disagree</option>
-<option>Strongly Disagree</option>
+<option>&lt;1</option>
+<option>1–5</option>
+<option>6–10</option>
+<option>11–20</option>
+<option>20+</option>
 </select>
+</section>
 
-<label for="communicationRating">Communication between SA and LA staff is effective.</label>
-<select id="communicationRating" name="communicationRating" required>
-<option value="">Select one</option>
-<option>Strongly Agree</option>
-<option>Agree</option>
-<option>Neutral</option>
-<option>Disagree</option>
-<option>Strongly Disagree</option>
-</select>
+<section>
+<h2>Section 2: Training</h2>
 
-<label for="participantBarriers">
-What barriers do participants face when accessing WIC?
-</label>
-<textarea id="participantBarriers" name="participantBarriers" rows="4"></textarea>
+<p>Rate your agreement with each statement.</p>
 
-<label for="oqiPriorities">
-What should OQI focus on over the next 1–3 years?
-</label>
-<textarea id="oqiPriorities" name="oqiPriorities" rows="4"></textarea>
+<div id="trainingQuestions"></div>
 
-<label for="additionalFeedback">
-Additional feedback or suggestions
-</label>
-<textarea id="additionalFeedback" name="additionalFeedback" rows="4"></textarea>
+<label>Preferred training methods. Select all that apply.</label>
+<div class="checkbox-group">
+<label><input type="checkbox" name="preferredTrainingMethods" value="In-person"> In-person</label>
+<label><input type="checkbox" name="preferredTrainingMethods" value="Live virtual"> Live virtual</label>
+<label><input type="checkbox" name="preferredTrainingMethods" value="Recorded webinars"> Recorded webinars</label>
+<label><input type="checkbox" name="preferredTrainingMethods" value="Self-paced online"> Self-paced online</label>
+<label><input type="checkbox" name="preferredTrainingMethods" value="Regional workshops"> Regional workshops</label>
+<label><input type="checkbox" name="preferredTrainingMethods" value="One-on-one coaching"> One-on-one coaching</label>
+</div>
+
+<label>What training topics would you like to receive during the next year?</label>
+<textarea name="trainingTopics" rows="4"></textarea>
+</section>
+
+<section>
+<h2>Section 3: Communication</h2>
+
+<p>Rate your agreement with each statement.</p>
+
+<div id="communicationQuestions"></div>
+
+<label>How do you prefer to receive important updates?</label>
+<div class="checkbox-group">
+<label><input type="checkbox" name="preferredUpdates" value="Email"> Email</label>
+<label><input type="checkbox" name="preferredUpdates" value="Monthly newsletter"> Monthly newsletter</label>
+<label><input type="checkbox" name="preferredUpdates" value="Virtual meetings"> Virtual meetings</label>
+<label><input type="checkbox" name="preferredUpdates" value="Written summaries"> Written summaries</label>
+<label><input type="checkbox" name="preferredUpdates" value="Teams"> Teams</label>
+<label><input type="checkbox" name="preferredUpdates" value="Other"> Other</label>
+</div>
+</section>
+
+<section>
+<h2>Section 4: Policies and Procedures</h2>
+
+<div id="policyQuestions"></div>
+
+<label>What policy or procedure creates the greatest challenge in your work?</label>
+<textarea name="policyChallenge" rows="4"></textarea>
+</section>
+
+<section>
+<h2>Section 5: Technology</h2>
+
+<div id="technologyQuestions"></div>
+
+<label>What technology improvements would help you most?</label>
+<textarea name="technologyImprovements" rows="4"></textarea>
+</section>
+
+<section>
+<h2>Section 6: Participant Experience</h2>
+
+<p>Thinking about WIC participants, rate each statement.</p>
+
+<div id="participantQuestions"></div>
+
+<label>What barriers do participants face in your area?</label>
+<textarea name="participantBarriers" rows="4"></textarea>
+</section>
+
+<section>
+<h2>Section 7: Local Agency Needs</h2>
+
+<label>What challenges currently have the greatest impact on your clinic? Select all that apply.</label>
+<div class="checkbox-group">
+<label><input type="checkbox" name="localAgencyNeeds" value="Staffing shortages"> Staffing shortages</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Recruitment"> Recruitment</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Retention"> Retention</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Training"> Training</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Funding"> Funding</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Outreach"> Outreach</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Participant recruitment"> Participant recruitment</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Participant retention"> Participant retention</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Clinic space"> Clinic space</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Technology"> Technology</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Scheduling"> Scheduling</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Transportation"> Transportation</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Language barriers"> Language barriers</label>
+<label><input type="checkbox" name="localAgencyNeeds" value="Other"> Other</label>
+</div>
+</section>
+
+<section>
+<h2>Section 8: State Agency Support</h2>
+
+<p>The State Agency...</p>
+
+<div id="stateAgencyQuestions"></div>
+</section>
+
+<section>
+<h2>Section 9: Looking Ahead</h2>
+
+<label>What should be OQI’s highest priorities during the next three years? Select your top five.</label>
+<div class="checkbox-group">
+<label><input type="checkbox" name="oqiPriorities" value="Staff training"> Staff training</label>
+<label><input type="checkbox" name="oqiPriorities" value="Staff retention"> Staff retention</label>
+<label><input type="checkbox" name="oqiPriorities" value="Participant recruitment"> Participant recruitment</label>
+<label><input type="checkbox" name="oqiPriorities" value="Participant retention"> Participant retention</label>
+<label><input type="checkbox" name="oqiPriorities" value="Breastfeeding support"> Breastfeeding support</label>
+<label><input type="checkbox" name="oqiPriorities" value="Technology improvements"> Technology improvements</label>
+<label><input type="checkbox" name="oqiPriorities" value="Outreach"> Outreach</label>
+<label><input type="checkbox" name="oqiPriorities" value="Data and reporting"> Data and reporting</label>
+<label><input type="checkbox" name="oqiPriorities" value="Clinic efficiency"> Clinic efficiency</label>
+<label><input type="checkbox" name="oqiPriorities" value="Communication"> Communication</label>
+<label><input type="checkbox" name="oqiPriorities" value="Policy simplification"> Policy simplification</label>
+<label><input type="checkbox" name="oqiPriorities" value="Partnerships"> Partnerships</label>
+<label><input type="checkbox" name="oqiPriorities" value="Nutrition education"> Nutrition education</label>
+<label><input type="checkbox" name="oqiPriorities" value="Equity/access"> Equity/access</label>
+<label><input type="checkbox" name="oqiPriorities" value="Other"> Other</label>
+</div>
+</section>
+
+<section>
+<h2>Final Questions</h2>
+
+<label>What is one thing WIC is doing well?</label>
+<textarea name="wicDoingWell" rows="4"></textarea>
+
+<label>What is one thing WIC should improve first?</label>
+<textarea name="wicImproveFirst" rows="4"></textarea>
+
+<label>If you could change one thing about the WV WIC Program tomorrow, what would it be?</label>
+<textarea name="wicChangeTomorrow" rows="4"></textarea>
+</section>
 
 <button type="submit">Submit Survey</button>
-
 <p id="message"></p>
 
 </form>
