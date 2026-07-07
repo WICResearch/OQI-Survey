@@ -489,13 +489,26 @@ method: "POST",
 mode: "no-cors",
 body: JSON.stringify(answers)
 })
-.then(result => {
-message.textContent = "Thank you! Your response has been submitted.";
-currentPage = 0;
+.then(() => {
+document.getElementById("surveyForm").innerHTML = `
+<div style="text-align:center; padding:60px 20px;">
+<h1 style="color:#4b2e83;">Thank You!</h1>
 
-Object.keys(answers).forEach(key => delete answers[key]);
+<p style="font-size:20px;">
+Your response has been successfully submitted.
+</p>
 
-renderPage();
+<p>
+Thank you for taking the time to provide feedback.
+Your input will help guide future OQI efforts.
+</p>
+
+<button onclick="location.reload()">
+Submit Another Response
+</button>
+</div>
+`;
+
 window.scrollTo({ top: 0, behavior: "smooth" });
 })
 .catch(error => {
