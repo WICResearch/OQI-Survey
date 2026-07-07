@@ -163,3 +163,16 @@ margin-right: auto !important;
 #submitBtn {
 margin-left: auto !important;
 }
+.logo-row {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  gap: 30px; 
+margin-bottom: 20px;
+}
+.logo {
+  max-height: 50px;
+  max-width: 220px;
+  width: auto;
+  object-fit: contain;
+}
