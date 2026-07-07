@@ -3,16 +3,21 @@ font-family: Arial, sans-serif;
 background: #f5f7fa;
 color: #222;
 margin: 0;
-padding: 0;
+padding: 20px;
 }
 
 .container {
-max-width: 850px;
-margin: 40px auto;
+max-width: 720px;
+margin: 30px auto;
 background: white;
-padding: 30px;
-border-radius: 14px;
+padding: 28px;
+border-radius: 16px;
 box-shadow: 0 2px 14px rgba(0,0,0,0.12);
+}
+
+.survey-header {
+text-align: center;
+margin-bottom: 24px;
 }
 
 h1 {
@@ -22,22 +27,49 @@ margin-bottom: 10px;
 
 h2 {
 color: #4b2e83;
-margin-top: 35px;
-border-bottom: 2px solid #eee;
-padding-bottom: 8px;
+margin-top: 0;
 }
 
 p {
 line-height: 1.5;
 }
 
-section {
-margin-bottom: 30px;
+.progress-text {
+font-weight: bold;
+margin-bottom: 8px;
+}
+
+.progress-bar {
+width: 100%;
+height: 10px;
+background: #e6e6ef;
+border-radius: 20px;
+margin-bottom: 24px;
+overflow: hidden;
+}
+
+#progressFill {
+height: 100%;
+width: 0%;
+background: #4b2e83;
+transition: width 0.3s ease;
+}
+
+.question-card {
+background: #ffffff;
+border: 1px solid #e4e4ec;
+border-radius: 14px;
+padding: 22px;
+min-height: 280px;
+}
+
+.field {
+margin-bottom: 22px;
 }
 
 label {
 display: block;
-margin-top: 18px;
+margin-bottom: 8px;
 font-weight: bold;
 }
 
@@ -45,10 +77,9 @@ input[type="text"],
 select,
 textarea {
 width: 100%;
-padding: 12px;
-margin-top: 6px;
+padding: 13px;
 border: 1px solid #bbb;
-border-radius: 8px;
+border-radius: 9px;
 font-size: 1rem;
 box-sizing: border-box;
 }
@@ -58,30 +89,34 @@ resize: vertical;
 }
 
 .checkbox-group {
-margin-top: 10px;
-padding: 12px;
 background: #f8f8fb;
-border-radius: 8px;
+border-radius: 10px;
+padding: 14px;
 }
 
 .checkbox-group label {
 font-weight: normal;
-margin-top: 10px;
-}
-
-.question {
 margin-bottom: 12px;
 }
 
+.checkbox-group input {
+margin-right: 8px;
+}
+
+.button-row {
+display: flex;
+gap: 12px;
+margin-top: 24px;
+}
+
 button {
-margin-top: 25px;
 width: 100%;
 padding: 15px;
 background: #4b2e83;
 color: white;
 border: none;
-border-radius: 8px;
-font-size: 1.1rem;
+border-radius: 9px;
+font-size: 1.05rem;
 cursor: pointer;
 }
 
@@ -89,8 +124,16 @@ button:hover {
 background: #351f63;
 }
 
+#backBtn {
+background: #6c757d;
+}
+
+#submitBtn {
+background: #2e7d32;
+}
+
 #message {
-margin-top: 20px;
+margin-top: 18px;
 font-weight: bold;
 text-align: center;
 }
