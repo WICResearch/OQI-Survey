@@ -142,3 +142,24 @@ margin-top: 18px;
 font-weight: bold;
 text-align: center;
 }
+.button-row {
+display: flex !important;
+flex-direction: row !important;
+justify-content: space-between !important;
+align-items: center !important;
+gap: 20px !important;
+}
+
+.button-row button {
+width: 160px !important;
+margin-top: 0 !important;
+}
+
+#backBtn {
+margin-right: auto !important;
+}
+
+#nextBtn,
+#submitBtn {
+margin-left: auto !important;
+}
