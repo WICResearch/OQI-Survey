@@ -1,4 +1,4 @@
-const scriptURL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const scriptURL = "https://script.google.com/macros/s/YOUR-LONG-CODE-HERE/exec";
 
 const scaleOptions = [
 "Strongly Agree",
