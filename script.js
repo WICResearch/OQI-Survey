@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/YOUR-LONG-CODE-HERE/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbyXt8YT9VVOZysPOwlaUYEd_IgFr5qG7VhFhKscUFacg53IQf_sGMJrCY_iLCjBPIpl/exec";
 
 const scaleOptions = [
 "Strongly Agree",
