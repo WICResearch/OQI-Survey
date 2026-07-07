@@ -486,9 +486,9 @@ message.textContent = "Submitting...";
 
 fetch(scriptURL, {
 method: "POST",
+mode: "no-cors",
 body: JSON.stringify(answers)
 })
-.then(response => response.json())
 .then(result => {
 message.textContent = "Thank you! Your response has been submitted.";
 currentPage = 0;
