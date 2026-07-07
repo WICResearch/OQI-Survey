@@ -105,12 +105,14 @@ margin-right: 8px;
 
 .button-row {
 display: flex;
-gap: 12px;
+justify-content: space-between;
+  align-items: center;
 margin-top: 24px;
+  gap: 20px; 
 }
 
 button {
-width: 100%;
+width: 170px;
 padding: 15px;
 background: #4b2e83;
 color: white;
@@ -130,6 +132,9 @@ background: #6c757d;
 
 #submitBtn {
 background: #2e7d32;
+}
+#submitBtn {
+  margin-left: auto;
 }
 
 #message {
