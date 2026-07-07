@@ -518,3 +518,9 @@ console.error("Error:", error);
 });
 
 renderPage();
+document.getElementById("beginSurveyBtn").addEventListener("click", () => {
+document.getElementById("introPage").style.display = "none";
+document.getElementById("surveyForm").style.display = "block";
+document.getElementById("surveyForm").style.display = "none";
+renderPage();
+});
