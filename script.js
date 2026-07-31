@@ -14,9 +14,9 @@ const answers = {};
 
 const pages = [
   {
-    title: "About You",
+    title: "Participant Information",
     description:
-      "These questions help group responses by staff role and experience.",
+      "Please provide a few details about your role and experience with WIC.",
     fields: [
       {
         type: "select",
@@ -34,22 +34,13 @@ const pages = [
           "State Agency",
           "Other"
         ]
-      }
-    ]
-  },
-  {
-    title: "About You",
-    fields: [
+      },
       {
         type: "text",
         name: "localAgency",
-        label: "Which local agency do you work for?"
-      }
-    ]
-  },
-  {
-    title: "About You",
-    fields: [
+        label: "Which local agency or department do you work for?",
+        required: true
+      },
       {
         type: "select",
         name: "yearsInWIC",
@@ -65,128 +56,175 @@ const pages = [
       }
     ]
   },
+
   {
-    title: "Local Agency Operations",
-    description:
-      "Please indicate your level of agreement with each statement about this session.",
+    title: "Welcome and OQI Overview",
+    subtitle:
+      "OQI Purpose, Mission, Values, Agenda, and Consensus Decision-Making",
+    description: "Please rate the following statements about this session.",
+    fields: [
+      {
+        type: "scale",
+        name: "welcomePresenterClear",
+        label: "Presenter communicated clearly."
+      },
+      {
+        type: "scale",
+        name: "welcomeOrganized",
+        label: "Session was well organized."
+      },
+      {
+        type: "scale",
+        name: "welcomeGoodUseOfTime",
+        label: "Session was a good use of my time."
+      },
+      {
+        type: "scale",
+        name: "welcomeEasyToFollow",
+        label: "Session was easy to follow."
+      },
+      {
+        type: "textarea",
+        name: "welcomeSuggestions",
+        heading: "Suggestions",
+        label: "What suggestions do you have for improving this session?"
+      }
+    ]
+  },
+
+  {
+    title: "Policy Update",
+    topics: [
+      "Policy 1.29 – Quality Improvement Local Agency Responsibilities",
+      "Foster Care Change of Custody",
+      "Miscarriage Letters",
+      "Policy 1.16"
+    ],
+    description: "Please rate the following statements about this session.",
+    fields: [
+      {
+        type: "scale",
+        name: "policyPresenterClear",
+        label: "Presenter communicated clearly."
+      },
+      {
+        type: "scale",
+        name: "policyOrganized",
+        label: "Session was well organized."
+      },
+      {
+        type: "scale",
+        name: "policyGoodUseOfTime",
+        label: "Session was a good use of my time."
+      },
+      {
+        type: "scale",
+        name: "policyEasyToFollow",
+        label: "Session was easy to follow."
+      },
+      {
+        type: "textarea",
+        name: "policySuggestions",
+        heading: "Suggestions",
+        label: "What suggestions do you have for improving this session?"
+      }
+    ]
+  },
+
+  {
+    title: "Funding Discussion",
+    topics: [
+      "Spend-Down Options",
+      "WIC Tents and WICI Funding",
+      "WICI 2026 Masimo Pilot",
+      "FY2027 Funding",
+      "Overview of Projections",
+      "Operations Grants Administration"
+    ],
+    description: "Please rate the following statements about this session.",
+    fields: [
+      {
+        type: "scale",
+        name: "fundingPresenterClear",
+        label: "Presenter communicated clearly."
+      },
+      {
+        type: "scale",
+        name: "fundingOrganized",
+        label: "Session was well organized."
+      },
+      {
+        type: "scale",
+        name: "fundingGoodUseOfTime",
+        label: "Session was a good use of my time."
+      },
+      {
+        type: "scale",
+        name: "fundingEasyToFollow",
+        label: "Session was easy to follow."
+      },
+      {
+        type: "textarea",
+        name: "fundingSuggestions",
+        heading: "Suggestions",
+        label: "What suggestions do you have for improving this session?"
+      }
+    ]
+  },
+
+  {
+    title: "Local Operations",
+    topics: [
+      "Lead Testing Expansion",
+      "Mental Health Certification Expansion"
+    ],
+    description: "Please rate the following statements about this session.",
     fields: [
       {
         type: "scale",
         name: "localOperationsPresenterClear",
-        label: "The presenter communicated clearly."
+        label: "Presenter communicated clearly."
       },
       {
         type: "scale",
         name: "localOperationsOrganized",
-        label: "The session was well organized."
+        label: "Session was well organized."
       },
       {
         type: "scale",
         name: "localOperationsGoodUseOfTime",
-        label: "The session was a good use of my time."
+        label: "Session was a good use of my time."
       },
       {
         type: "scale",
         name: "localOperationsEasyToFollow",
-        label: "The session was easy to follow."
-      }
-    ]
-  },
-  {
-    title: "Local Agency Operations",
-    fields: [
+        label: "Session was easy to follow."
+      },
       {
         type: "textarea",
         name: "localOperationsSuggestions",
-        label:
-          "Do you have any suggestions for improvement for future sessions on this topic?"
+        heading: "Suggestions",
+        label: "What suggestions do you have for improving this session?"
       }
     ]
   },
+
   {
-    title: "Outreach Quality Improvement, Innovation, and Best Practices",
+    title: "Overall Reflection",
     description:
-      "Please indicate your level of agreement with each statement about this session.",
-    fields: [
-      {
-        type: "scale",
-        name: "outreachPresenterClear",
-        label: "The presenter communicated clearly."
-      },
-      {
-        type: "scale",
-        name: "outreachOrganized",
-        label: "The session was well organized."
-      },
-      {
-        type: "scale",
-        name: "outreachGoodUseOfTime",
-        label: "The session was a good use of my time."
-      },
-      {
-        type: "scale",
-        name: "outreachEasyToFollow",
-        label: "The session was easy to follow."
-      }
-    ]
-  },
-  {
-    title: "Outreach Quality Improvement, Innovation, and Best Practices",
+      "Please share any final thoughts about today’s OQI meeting.",
     fields: [
       {
         type: "textarea",
-        name: "outreachSuggestions",
+        name: "biggestTakeaway",
         label:
-          "Do you have any suggestions for improvement for future sessions on this topic?"
-      }
-    ]
-  },
-  {
-    title: "Grant Statement of Work Discussion",
-    description:
-      "Please indicate your level of agreement with each statement about this session.",
-    fields: [
-      {
-        type: "scale",
-        name: "grantPresenterClear",
-        label: "The presenter communicated clearly."
+          "What is one idea or takeaway from today’s sessions that could help strengthen WV WIC?"
       },
-      {
-        type: "scale",
-        name: "grantOrganized",
-        label: "The session was well organized."
-      },
-      {
-        type: "scale",
-        name: "grantGoodUseOfTime",
-        label: "The session was a good use of my time."
-      },
-      {
-        type: "scale",
-        name: "grantEasyToFollow",
-        label: "The session was easy to follow."
-      }
-    ]
-  },
-  {
-    title: "Grant Statement of Work Discussion",
-    fields: [
       {
         type: "textarea",
-        name: "grantSuggestions",
+        name: "additionalFeedback",
         label:
-          "Do you have any suggestions for improvement for future sessions on this topic?"
-      }
-    ]
-  },
-  {
-    title: "Final Question",
-    fields: [
-      {
-        type: "textarea",
-        name: "positiveTakeaway",
-        label:
-          "What is one or more positive takeaway from today's session that could help improve WV WIC?"
+          "Is there anything else you would like the Office of Quality Improvement to know?"
       }
     ]
   }
@@ -204,27 +242,49 @@ function renderPage() {
   const page = pages[currentPage];
 
   questionCard.innerHTML = `
-    <h2>${page.title}</h2>
-    ${page.description ? `<p>${page.description}</p>` : ""}
+    <div class="section-heading">
+      <p class="section-number">Section ${currentPage + 1}</p>
+      <h2>${page.title}</h2>
+      ${page.subtitle ? `<p class="section-subtitle">${page.subtitle}</p>` : ""}
+    </div>
+
+    ${
+      page.topics
+        ? `
+          <div class="topics-box">
+            <h3>Topics Covered</h3>
+            <ul>
+              ${page.topics.map((topic) => `<li>${topic}</li>`).join("")}
+            </ul>
+          </div>
+        `
+        : ""
+    }
+
+    ${
+      page.description
+        ? `<p class="section-description">${page.description}</p>`
+        : ""
+    }
   `;
 
   page.fields.forEach((field) => {
     questionCard.appendChild(createField(field));
   });
 
-  progressText.textContent = `Question ${currentPage + 1} of ${pages.length}`;
+  progressText.textContent =
+    `Section ${currentPage + 1} of ${pages.length}`;
 
-  progressFill.style.width = `${
-    ((currentPage + 1) / pages.length) * 100
-  }%`;
+  progressFill.style.width =
+    `${((currentPage + 1) / pages.length) * 100}%`;
 
-  backBtn.style.display = currentPage === 0 ? "none" : "block";
+  backBtn.style.display = currentPage === 0 ? "none" : "inline-block";
 
   nextBtn.style.display =
-    currentPage === pages.length - 1 ? "none" : "block";
+    currentPage === pages.length - 1 ? "none" : "inline-block";
 
   submitBtn.style.display =
-    currentPage === pages.length - 1 ? "block" : "none";
+    currentPage === pages.length - 1 ? "inline-block" : "none";
 
   message.textContent = "";
 }
@@ -233,13 +293,30 @@ function createField(field) {
   const wrapper = document.createElement("div");
   wrapper.className = "field";
 
+  if (field.heading) {
+    const heading = document.createElement("h3");
+    heading.className = "field-heading";
+    heading.textContent = field.heading;
+    wrapper.appendChild(heading);
+  }
+
   const label = document.createElement("label");
+  label.setAttribute("for", field.name);
   label.textContent = field.label;
+
+  if (field.required) {
+    const requiredMark = document.createElement("span");
+    requiredMark.className = "required-mark";
+    requiredMark.textContent = " *";
+    label.appendChild(requiredMark);
+  }
+
   wrapper.appendChild(label);
 
   if (field.type === "select" || field.type === "scale") {
     const select = document.createElement("select");
 
+    select.id = field.name;
     select.name = field.name;
     select.required = field.required !== false;
 
@@ -247,6 +324,7 @@ function createField(field) {
     defaultOption.value = "";
     defaultOption.textContent = "Select one";
     defaultOption.disabled = true;
+    defaultOption.selected = true;
 
     select.appendChild(defaultOption);
 
@@ -255,10 +333,8 @@ function createField(field) {
 
     options.forEach((optionText) => {
       const option = document.createElement("option");
-
       option.value = optionText;
       option.textContent = optionText;
-
       select.appendChild(option);
     });
 
@@ -273,12 +349,10 @@ function createField(field) {
     const input = document.createElement("input");
 
     input.type = "text";
+    input.id = field.name;
     input.name = field.name;
     input.value = answers[field.name] || "";
-
-    if (field.required) {
-      input.required = true;
-    }
+    input.required = field.required === true;
 
     wrapper.appendChild(input);
   }
@@ -286,58 +360,14 @@ function createField(field) {
   if (field.type === "textarea") {
     const textarea = document.createElement("textarea");
 
+    textarea.id = field.name;
     textarea.name = field.name;
     textarea.rows = 5;
     textarea.value = answers[field.name] || "";
-
-    if (field.required) {
-      textarea.required = true;
-    }
+    textarea.required = field.required === true;
+    textarea.placeholder = "Enter your response here...";
 
     wrapper.appendChild(textarea);
-  }
-
-  if (field.type === "checkbox") {
-    const group = document.createElement("div");
-    group.className = "checkbox-group";
-
-    field.options.forEach((optionText) => {
-      const optionLabel = document.createElement("label");
-      const checkbox = document.createElement("input");
-
-      checkbox.type = "checkbox";
-      checkbox.name = field.name;
-      checkbox.value = optionText;
-
-      if (
-        Array.isArray(answers[field.name]) &&
-        answers[field.name].includes(optionText)
-      ) {
-        checkbox.checked = true;
-      }
-
-      checkbox.addEventListener("change", () => {
-        const selected = group.querySelectorAll("input:checked");
-
-        if (
-          field.maxSelections &&
-          selected.length > field.maxSelections
-        ) {
-          checkbox.checked = false;
-
-          alert(
-            `Please select no more than ${field.maxSelections}.`
-          );
-        }
-      });
-
-      optionLabel.appendChild(checkbox);
-      optionLabel.append(` ${optionText}`);
-
-      group.appendChild(optionLabel);
-    });
-
-    wrapper.appendChild(group);
   }
 
   return wrapper;
@@ -349,17 +379,7 @@ function saveCurrentPage() {
   );
 
   fields.forEach((field) => {
-    if (field.type === "checkbox") {
-      const checked = questionCard.querySelectorAll(
-        `input[name="${field.name}"]:checked`
-      );
-
-      answers[field.name] = Array.from(checked).map(
-        (item) => item.value
-      );
-    } else {
-      answers[field.name] = field.value;
-    }
+    answers[field.name] = field.value.trim();
   });
 }
 
@@ -415,7 +435,7 @@ document
 
     saveCurrentPage();
 
-    message.textContent = "Submitting...";
+    message.textContent = "Submitting your response...";
     submitBtn.disabled = true;
 
     fetch(scriptURL, {
@@ -425,16 +445,24 @@ document
     })
       .then(() => {
         document.getElementById("surveyForm").innerHTML = `
-          <div style="text-align:center; padding:60px 20px;">
-            <h1 style="color:#4b2e83;">Thank You!</h1>
+          <div class="thank-you-card">
+            <div class="thank-you-icon">✓</div>
 
-            <p style="font-size:20px;">
-              Your response has been successfully submitted.
+            <h1>Thank You!</h1>
+
+            <p class="thank-you-lead">
+              Thank you for completing the 2026 WV WIC OQI Day 1 Evaluation.
             </p>
 
             <p>
-              Thank you for taking the time to provide feedback.
-              Your input will help guide future OQI sessions.
+              Your feedback will be reviewed by the Office of Quality
+              Improvement and used to strengthen future meetings, training
+              opportunities, and statewide initiatives.
+            </p>
+
+            <p>
+              We appreciate your time and continued commitment to serving
+              West Virginia WIC participants.
             </p>
 
             <button type="button" onclick="location.reload()">
@@ -454,7 +482,7 @@ document
 
         submitBtn.disabled = false;
 
-        console.error("Error:", error);
+        console.error("Submission error:", error);
       });
   });
 
@@ -472,7 +500,3 @@ document
       behavior: "smooth"
     });
   });
-    
- 
-   
- 
