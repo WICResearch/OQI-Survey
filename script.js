@@ -14,28 +14,80 @@ const answers = {};
 
 const pages = [
   {
+    title: "About You",
+    description:
+      "These questions help group responses by staff role and experience.",
+    fields: [
+      {
+        type: "select",
+        name: "primaryRole",
+        label: "What is your primary role?",
+        required: true,
+        options: [
+          "Local Agency Director",
+          "Nutritionist/RD",
+          "CPA",
+          "Breastfeeding Peer Counselor",
+          "Breastfeeding Coordinator",
+          "Outreach",
+          "Office Associate",
+          "State Agency",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    title: "About You",
+    fields: [
+      {
+        type: "text",
+        name: "localAgency",
+        label: "Which local agency do you work for?"
+      }
+    ]
+  },
+  {
+    title: "About You",
+    fields: [
+      {
+        type: "select",
+        name: "yearsInWIC",
+        label: "How many years have you worked in WIC?",
+        required: true,
+        options: [
+          "Less than 1 year",
+          "1–5 years",
+          "6–10 years",
+          "11–20 years",
+          "More than 20 years"
+        ]
+      }
+    ]
+  },
+  {
     title: "Local Agency Operations",
     description:
       "Please indicate your level of agreement with each statement about this session.",
     fields: [
       {
         type: "scale",
-        name: "localAgencyOperationsPresenterClear",
+        name: "localOperationsPresenterClear",
         label: "The presenter communicated clearly."
       },
       {
         type: "scale",
-        name: "localAgencyOperationsOrganized",
+        name: "localOperationsOrganized",
         label: "The session was well organized."
       },
       {
         type: "scale",
-        name: "localAgencyOperationsGoodUseOfTime",
+        name: "localOperationsGoodUseOfTime",
         label: "The session was a good use of my time."
       },
       {
         type: "scale",
-        name: "localAgencyOperationsEasyToFollow",
+        name: "localOperationsEasyToFollow",
         label: "The session was easy to follow."
       }
     ]
@@ -45,10 +97,9 @@ const pages = [
     fields: [
       {
         type: "textarea",
-        name: "localAgencyOperationsSuggestions",
+        name: "localOperationsSuggestions",
         label:
-          "Do you have any suggestions for improvement for future sessions on this topic? (Local Agency Operations)",
-        required: false
+          "Do you have any suggestions for improvement for future sessions on this topic?"
       }
     ]
   },
@@ -86,8 +137,7 @@ const pages = [
         type: "textarea",
         name: "outreachSuggestions",
         label:
-          "Do you have any suggestions for improvement for future sessions on this topic? (Outreach Quality Improvement, Innovation, and Best Practices)",
-        required: false
+          "Do you have any suggestions for improvement for future sessions on this topic?"
       }
     ]
   },
@@ -98,22 +148,22 @@ const pages = [
     fields: [
       {
         type: "scale",
-        name: "grantStatementPresenterClear",
+        name: "grantPresenterClear",
         label: "The presenter communicated clearly."
       },
       {
         type: "scale",
-        name: "grantStatementOrganized",
+        name: "grantOrganized",
         label: "The session was well organized."
       },
       {
         type: "scale",
-        name: "grantStatementGoodUseOfTime",
+        name: "grantGoodUseOfTime",
         label: "The session was a good use of my time."
       },
       {
         type: "scale",
-        name: "grantStatementEasyToFollow",
+        name: "grantEasyToFollow",
         label: "The session was easy to follow."
       }
     ]
@@ -123,22 +173,20 @@ const pages = [
     fields: [
       {
         type: "textarea",
-        name: "grantStatementSuggestions",
+        name: "grantSuggestions",
         label:
-          "Do you have any suggestions for improvement for future sessions on this topic? (Grant Statement of Work Discussion)",
-        required: false
+          "Do you have any suggestions for improvement for future sessions on this topic?"
       }
     ]
   },
   {
-    title: "Today's Takeaway",
+    title: "Final Question",
     fields: [
       {
         type: "textarea",
         name: "positiveTakeaway",
         label:
-          "What is one (or more) positive takeaway from today's session that could help improve WV WIC?",
-        required: false
+          "What is one or more positive takeaway from today's session that could help improve WV WIC?"
       }
     ]
   }
@@ -198,6 +246,7 @@ function createField(field) {
     const defaultOption = document.createElement("option");
     defaultOption.value = "";
     defaultOption.textContent = "Select one";
+    defaultOption.disabled = true;
 
     select.appendChild(defaultOption);
 
@@ -225,8 +274,11 @@ function createField(field) {
 
     input.type = "text";
     input.name = field.name;
-    input.required = field.required === true;
     input.value = answers[field.name] || "";
+
+    if (field.required) {
+      input.required = true;
+    }
 
     wrapper.appendChild(input);
   }
@@ -236,8 +288,11 @@ function createField(field) {
 
     textarea.name = field.name;
     textarea.rows = 5;
-    textarea.required = field.required === true;
     textarea.value = answers[field.name] || "";
+
+    if (field.required) {
+      textarea.required = true;
+    }
 
     wrapper.appendChild(textarea);
   }
@@ -278,6 +333,7 @@ function createField(field) {
 
       optionLabel.appendChild(checkbox);
       optionLabel.append(` ${optionText}`);
+
       group.appendChild(optionLabel);
     });
 
@@ -360,9 +416,7 @@ document
     saveCurrentPage();
 
     message.textContent = "Submitting...";
-
     submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting...";
 
     fetch(scriptURL, {
       method: "POST",
@@ -380,8 +434,7 @@ document
 
             <p>
               Thank you for taking the time to provide feedback.
-              Your input will help the Office of Quality Improvement
-              improve future sessions.
+              Your input will help guide future OQI sessions.
             </p>
 
             <button type="button" onclick="location.reload()">
@@ -400,7 +453,6 @@ document
           "There was an error submitting the survey. Please try again.";
 
         submitBtn.disabled = false;
-        submitBtn.textContent = "Submit Survey";
 
         console.error("Error:", error);
       });
@@ -420,11 +472,7 @@ document
       behavior: "smooth"
     });
   });
-
-
-
-
-
-
-
-
+    
+ 
+   
+ 
