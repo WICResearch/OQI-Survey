@@ -1,320 +1,147 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbx498RteNL0Z6RA1u0yfL0Cx_CeFxGD-UvMV62RM0FublMepjFRAwZElvxXt5qGFeNE/exec";
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbx498RteNL0Z6RA1u0yfL0Cx_CeFxGD-UvMV62RM0FublMepjFRAwZElvxXt5qGFeNE/exec";
 
 const scaleOptions = [
-"Strongly Agree",
-"Agree",
-"Neutral",
-"Disagree",
-"Strongly Disagree"
+  "Strongly Disagree",
+  "Somewhat Disagree",
+  "Neutral",
+  "Somewhat Agree",
+  "Strongly Agree"
 ];
 
 let currentPage = 0;
 const answers = {};
 
 const pages = [
-{
-title: "About You",
-description: "These questions help group responses by staff role and experience.",
-fields: [
-{
-type: "select",
-name: "primaryRole",
-label: "What is your primary role?",
-required: true,
-options: [
-"Local Agency Director",
-"Nutritionist/RD",
-"CPA",
-"Breastfeeding Peer Counselor",
-"Breastfeeding Coordinator",
-"Outreach",
-"Office Associate",
-"State Agency",
-"Other"
-]
-}
-]
-},
-{
-title: "About You",
-fields: [
-{
-type: "text",
-name: "localAgency",
-label: "Which local agency do you work for?"
-}
-]
-},
-{
-title: "About You",
-fields: [
-{
-type: "select",
-name: "yearsInWIC",
-label: "How many years have you worked in WIC?",
-required: true,
-options: ["<1", "1–5", "6–10", "11–20", "20+"]
-}
-]
-},
-{
-title: "Training",
-description: "Rate your agreement with each statement.",
-fields: [
-{ type: "scale", name: "trainingPreparesJob", label: "Training prepares me to perform my job effectively." },
-{ type: "scale", name: "trainingOpportunities", label: "I have adequate opportunities for continuing education." },
-{ type: "scale", name: "trainingQuestionsEasy", label: "I can easily ask questions during training." }
-]
-},
-{
-title: "Training",
-description: "Rate your agreement with each statement.",
-fields: [
-{ type: "scale", name: "trainingRelevant", label: "Training is relevant to my daily work." },
-{ type: "scale", name: "trainingFormatWorks", label: "Training is offered in a format that works well for me." },
-{ type: "scale", name: "trainingMaterialsClear", label: "Training materials are easy to understand." }
-]
-},
-{
-title: "Training",
-fields: [
-{ type: "scale", name: "trainingFollowUpSupport", label: "Follow-up support is available after training." }
-]
-},
-{
-title: "Training Preferences",
-fields: [
-{
-type: "checkbox",
-name: "preferredTrainingMethods",
-label: "Preferred training methods. Select all that apply.",
-options: [
-"In-person",
-"Live virtual",
-"Recorded webinars",
-"Self-paced online",
-"Regional workshops",
-"One-on-one coaching"
-]
-}
-]
-},
-{
-title: "Training Topics",
-fields: [
-{
-type: "textarea",
-name: "trainingTopics",
-label: "What training topics would you like to receive during the next year?"
-}
-]
-},
-{
-title: "Communication",
-description: "Rate your agreement with each statement.",
-fields: [
-{ type: "scale", name: "communicationTimely", label: "I receive important information in a timely manner." },
-{ type: "scale", name: "policyUpdatesClear", label: "Policy updates are communicated clearly." },
-{ type: "scale", name: "policyGuidanceClear", label: "Policy guidance is easy to understand." }
-]
-},
-{
-title: "Communication",
-description: "Rate your agreement with each statement.",
-fields: [
-{ type: "scale", name: "knowWhoToContact", label: "I know who to contact when I have questions." },
-{ type: "scale", name: "saLaCommunicationEffective", label: "Communication between the State Agency and Local Agencies is effective." },
-{ type: "scale", name: "feedbackHeard", label: "I feel my feedback is heard by State Agency staff." }
-]
-},
-{
-title: "Communication Preferences",
-fields: [
-{
-type: "checkbox",
-name: "preferredUpdates",
-label: "How do you prefer to receive important updates?",
-options: ["Email", "Monthly newsletter", "Virtual meetings", "Written summaries", "Teams", "Other"]
-}
-]
-},
-{
-title: "Policies and Procedures",
-fields: [
-{ type: "scale", name: "policiesEasyToLocate", label: "Policies are easy to locate." },
-{ type: "scale", name: "policiesPlainLanguage", label: "Policies are written in plain language." }
-]
-},
-{
-title: "Policies and Procedures",
-fields: [
-{ type: "scale", name: "policyChangesCommunicated", label: "Policy changes are communicated before implementation." },
-{ type: "scale", name: "policyChangeSupport", label: "I receive enough support when policies change." }
-]
-},
-{
-title: "Policy Challenge",
-fields: [
-{
-type: "textarea",
-name: "policyChallenge",
-label: "What policy or procedure creates the greatest challenge in your work?"
-}
-]
-},
-{
-title: "Technology",
-fields: [
-{ type: "scale", name: "crossroadsSupportsWork", label: "Crossroads supports my work effectively." },
-{ type: "scale", name: "technologyMakesJobEasier", label: "Technology makes my job easier." }
-]
-},
-{
-title: "Technology",
-fields: [
-{ type: "scale", name: "adequateTechnologyTraining", label: "I receive adequate technology training." },
-{ type: "scale", name: "equipmentMeetsNeeds", label: "Equipment available at my clinic meets our needs." }
-]
-},
-{
-title: "Technology Improvements",
-fields: [
-{
-type: "textarea",
-name: "technologyImprovements",
-label: "What technology improvements would help you most?"
-}
-]
-},
-{
-title: "Participant Experience",
-description: "Thinking about WIC participants, rate each statement.",
-fields: [
-{ type: "scale", name: "participantsScheduleEasily", label: "Participants can schedule appointments easily." },
-{ type: "scale", name: "participantsReachClinic", label: "Participants can reach our clinic when needed." },
-{ type: "scale", name: "participantsUnderstandInfo", label: "Participants can understand WIC information." }
-]
-},
-{
-title: "Participant Experience",
-description: "Thinking about WIC participants, rate each statement.",
-fields: [
-{ type: "scale", name: "participantsUseBenefits", label: "Participants can successfully use their benefits." },
-{ type: "scale", name: "participantsRespectfulService", label: "Participants receive respectful service." },
-{ type: "scale", name: "participantsTimelyAppointments", label: "Participants receive timely appointments." }
-]
-},
-{
-title: "Participant Barriers",
-fields: [
-{
-type: "textarea",
-name: "participantBarriers",
-label: "What barriers do participants face in your area?"
-}
-]
-},
-{
-title: "Local Agency Needs",
-fields: [
-{
-type: "checkbox",
-name: "localAgencyNeeds",
-label: "What challenges currently have the greatest impact on your clinic? Select all that apply.",
-options: [
-"Staffing shortages",
-"Recruitment",
-"Retention",
-"Training",
-"Funding",
-"Outreach",
-"Participant recruitment",
-"Participant retention",
-"Clinic space",
-"Technology",
-"Scheduling",
-"Transportation",
-"Language barriers",
-"Other"
-]
-}
-]
-},
-{
-title: "State Agency Support",
-description: "The State Agency...",
-fields: [
-{ type: "scale", name: "saUsefulGuidance", label: "Provides useful guidance." },
-{ type: "scale", name: "saRespondsPromptly", label: "Responds promptly to questions." },
-{ type: "scale", name: "saUnderstandsChallenges", label: "Understands challenges faced by local agencies." }
-]
-},
-{
-title: "State Agency Support",
-description: "The State Agency...",
-fields: [
-{ type: "scale", name: "saTechnicalAssistance", label: "Provides adequate technical assistance." },
-{ type: "scale", name: "saSupportsInnovation", label: "Supports innovation." }
-]
-},
-{
-title: "Looking Ahead",
-fields: [
-{
-type: "checkbox",
-name: "oqiPriorities",
-label: "What should be OQI’s highest priorities during the next three years? Select your top five.",
-maxSelections: 5,
-options: [
-"Staff training",
-"Staff retention",
-"Participant recruitment",
-"Participant retention",
-"Breastfeeding support",
-"Technology improvements",
-"Outreach",
-"Data and reporting",
-"Clinic efficiency",
-"Communication",
-"Policy simplification",
-"Partnerships",
-"Nutrition education",
-"Equity/access",
-"Other"
-]
-}
-]
-},
-{
-title: "Final Question",
-fields: [
-{
-type: "textarea",
-name: "wicDoingWell",
-label: "What is one thing WIC is doing well?"
-}
-]
-},
-{
-title: "Final Question",
-fields: [
-{
-type: "textarea",
-name: "wicImproveFirst",
-label: "What is one thing WIC should improve first?"
-}
-]
-},
-{
-title: "Final Question",
-fields: [
-{
-type: "textarea",
-name: "wicChangeTomorrow",
-label: "If you could change one thing about the WV WIC Program tomorrow, what would it be?"
-}
-]
-}
+  {
+    title: "Local Agency Operations",
+    description:
+      "Please indicate your level of agreement with each statement about this session.",
+    fields: [
+      {
+        type: "scale",
+        name: "localAgencyOperationsPresenterClear",
+        label: "The presenter communicated clearly."
+      },
+      {
+        type: "scale",
+        name: "localAgencyOperationsOrganized",
+        label: "The session was well organized."
+      },
+      {
+        type: "scale",
+        name: "localAgencyOperationsGoodUseOfTime",
+        label: "The session was a good use of my time."
+      },
+      {
+        type: "scale",
+        name: "localAgencyOperationsEasyToFollow",
+        label: "The session was easy to follow."
+      }
+    ]
+  },
+  {
+    title: "Local Agency Operations",
+    fields: [
+      {
+        type: "textarea",
+        name: "localAgencyOperationsSuggestions",
+        label:
+          "Do you have any suggestions for improvement for future sessions on this topic? (Local Agency Operations)",
+        required: false
+      }
+    ]
+  },
+  {
+    title: "Outreach Quality Improvement, Innovation, and Best Practices",
+    description:
+      "Please indicate your level of agreement with each statement about this session.",
+    fields: [
+      {
+        type: "scale",
+        name: "outreachPresenterClear",
+        label: "The presenter communicated clearly."
+      },
+      {
+        type: "scale",
+        name: "outreachOrganized",
+        label: "The session was well organized."
+      },
+      {
+        type: "scale",
+        name: "outreachGoodUseOfTime",
+        label: "The session was a good use of my time."
+      },
+      {
+        type: "scale",
+        name: "outreachEasyToFollow",
+        label: "The session was easy to follow."
+      }
+    ]
+  },
+  {
+    title: "Outreach Quality Improvement, Innovation, and Best Practices",
+    fields: [
+      {
+        type: "textarea",
+        name: "outreachSuggestions",
+        label:
+          "Do you have any suggestions for improvement for future sessions on this topic? (Outreach Quality Improvement, Innovation, and Best Practices)",
+        required: false
+      }
+    ]
+  },
+  {
+    title: "Grant Statement of Work Discussion",
+    description:
+      "Please indicate your level of agreement with each statement about this session.",
+    fields: [
+      {
+        type: "scale",
+        name: "grantStatementPresenterClear",
+        label: "The presenter communicated clearly."
+      },
+      {
+        type: "scale",
+        name: "grantStatementOrganized",
+        label: "The session was well organized."
+      },
+      {
+        type: "scale",
+        name: "grantStatementGoodUseOfTime",
+        label: "The session was a good use of my time."
+      },
+      {
+        type: "scale",
+        name: "grantStatementEasyToFollow",
+        label: "The session was easy to follow."
+      }
+    ]
+  },
+  {
+    title: "Grant Statement of Work Discussion",
+    fields: [
+      {
+        type: "textarea",
+        name: "grantStatementSuggestions",
+        label:
+          "Do you have any suggestions for improvement for future sessions on this topic? (Grant Statement of Work Discussion)",
+        required: false
+      }
+    ]
+  },
+  {
+    title: "Today's Takeaway",
+    fields: [
+      {
+        type: "textarea",
+        name: "positiveTakeaway",
+        label:
+          "What is one (or more) positive takeaway from today's session that could help improve WV WIC?",
+        required: false
+      }
+    ]
+  }
 ];
 
 const questionCard = document.getElementById("questionCard");
@@ -326,202 +153,278 @@ const submitBtn = document.getElementById("submitBtn");
 const message = document.getElementById("message");
 
 function renderPage() {
-const page = pages[currentPage];
+  const page = pages[currentPage];
 
-questionCard.innerHTML = `
-<h2>${page.title}</h2>
-${page.description ? `<p>${page.description}</p>` : ""}
-`;
+  questionCard.innerHTML = `
+    <h2>${page.title}</h2>
+    ${page.description ? `<p>${page.description}</p>` : ""}
+  `;
 
-page.fields.forEach(field => {
-questionCard.appendChild(createField(field));
-});
+  page.fields.forEach((field) => {
+    questionCard.appendChild(createField(field));
+  });
 
-progressText.textContent = `Question ${currentPage + 1} of ${pages.length}`;
-progressFill.style.width = `${((currentPage + 1) / pages.length) * 100}%`;
+  progressText.textContent = `Question ${currentPage + 1} of ${pages.length}`;
 
-backBtn.style.display = currentPage === 0 ? "none" : "block";
-nextBtn.style.display = currentPage === pages.length - 1 ? "none" : "block";
-submitBtn.style.display = currentPage === pages.length - 1 ? "block" : "none";
+  progressFill.style.width = `${
+    ((currentPage + 1) / pages.length) * 100
+  }%`;
 
-message.textContent = "";
+  backBtn.style.display = currentPage === 0 ? "none" : "block";
+
+  nextBtn.style.display =
+    currentPage === pages.length - 1 ? "none" : "block";
+
+  submitBtn.style.display =
+    currentPage === pages.length - 1 ? "block" : "none";
+
+  message.textContent = "";
 }
 
 function createField(field) {
-const wrapper = document.createElement("div");
-wrapper.className = "field";
+  const wrapper = document.createElement("div");
+  wrapper.className = "field";
 
-const label = document.createElement("label");
-label.textContent = field.label;
-wrapper.appendChild(label);
+  const label = document.createElement("label");
+  label.textContent = field.label;
+  wrapper.appendChild(label);
 
-if (field.type === "select" || field.type === "scale") {
-const select = document.createElement("select");
-select.name = field.name;
-select.required = field.required !== false;
+  if (field.type === "select" || field.type === "scale") {
+    const select = document.createElement("select");
 
-const defaultOption = document.createElement("option");
-defaultOption.value = "";
-defaultOption.textContent = "Select one";
-select.appendChild(defaultOption);
+    select.name = field.name;
+    select.required = field.required !== false;
 
-const options = field.type === "scale" ? scaleOptions : field.options;
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Select one";
 
-options.forEach(optionText => {
-const option = document.createElement("option");
-option.value = optionText;
-option.textContent = optionText;
-select.appendChild(option);
-});
+    select.appendChild(defaultOption);
 
-if (answers[field.name]) {
-select.value = answers[field.name];
-}
+    const options =
+      field.type === "scale" ? scaleOptions : field.options;
 
-wrapper.appendChild(select);
-}
+    options.forEach((optionText) => {
+      const option = document.createElement("option");
 
-if (field.type === "text") {
-const input = document.createElement("input");
-input.type = "text";
-input.name = field.name;
-input.value = answers[field.name] || "";
-wrapper.appendChild(input);
-}
+      option.value = optionText;
+      option.textContent = optionText;
 
-if (field.type === "textarea") {
-const textarea = document.createElement("textarea");
-textarea.name = field.name;
-textarea.rows = 5;
-textarea.value = answers[field.name] || "";
-wrapper.appendChild(textarea);
-}
+      select.appendChild(option);
+    });
 
-if (field.type === "checkbox") {
-const group = document.createElement("div");
-group.className = "checkbox-group";
+    if (answers[field.name]) {
+      select.value = answers[field.name];
+    }
 
-field.options.forEach(optionText => {
-const optionLabel = document.createElement("label");
-const checkbox = document.createElement("input");
+    wrapper.appendChild(select);
+  }
 
-checkbox.type = "checkbox";
-checkbox.name = field.name;
-checkbox.value = optionText;
+  if (field.type === "text") {
+    const input = document.createElement("input");
 
-if (Array.isArray(answers[field.name]) && answers[field.name].includes(optionText)) {
-checkbox.checked = true;
-}
+    input.type = "text";
+    input.name = field.name;
+    input.required = field.required === true;
+    input.value = answers[field.name] || "";
 
-checkbox.addEventListener("change", () => {
-const selected = group.querySelectorAll("input:checked");
+    wrapper.appendChild(input);
+  }
 
-if (field.maxSelections && selected.length > field.maxSelections) {
-checkbox.checked = false;
-alert(`Please select no more than ${field.maxSelections}.`);
-}
-});
+  if (field.type === "textarea") {
+    const textarea = document.createElement("textarea");
 
-optionLabel.appendChild(checkbox);
-optionLabel.append(` ${optionText}`);
-group.appendChild(optionLabel);
-});
+    textarea.name = field.name;
+    textarea.rows = 5;
+    textarea.required = field.required === true;
+    textarea.value = answers[field.name] || "";
 
-wrapper.appendChild(group);
-}
+    wrapper.appendChild(textarea);
+  }
 
-return wrapper;
+  if (field.type === "checkbox") {
+    const group = document.createElement("div");
+    group.className = "checkbox-group";
+
+    field.options.forEach((optionText) => {
+      const optionLabel = document.createElement("label");
+      const checkbox = document.createElement("input");
+
+      checkbox.type = "checkbox";
+      checkbox.name = field.name;
+      checkbox.value = optionText;
+
+      if (
+        Array.isArray(answers[field.name]) &&
+        answers[field.name].includes(optionText)
+      ) {
+        checkbox.checked = true;
+      }
+
+      checkbox.addEventListener("change", () => {
+        const selected = group.querySelectorAll("input:checked");
+
+        if (
+          field.maxSelections &&
+          selected.length > field.maxSelections
+        ) {
+          checkbox.checked = false;
+
+          alert(
+            `Please select no more than ${field.maxSelections}.`
+          );
+        }
+      });
+
+      optionLabel.appendChild(checkbox);
+      optionLabel.append(` ${optionText}`);
+      group.appendChild(optionLabel);
+    });
+
+    wrapper.appendChild(group);
+  }
+
+  return wrapper;
 }
 
 function saveCurrentPage() {
-const fields = questionCard.querySelectorAll("input, select, textarea");
+  const fields = questionCard.querySelectorAll(
+    "input, select, textarea"
+  );
 
-fields.forEach(field => {
-if (field.type === "checkbox") {
-const checked = questionCard.querySelectorAll(`input[name="${field.name}"]:checked`);
-answers[field.name] = Array.from(checked).map(item => item.value);
-} else {
-answers[field.name] = field.value;
-}
-});
+  fields.forEach((field) => {
+    if (field.type === "checkbox") {
+      const checked = questionCard.querySelectorAll(
+        `input[name="${field.name}"]:checked`
+      );
+
+      answers[field.name] = Array.from(checked).map(
+        (item) => item.value
+      );
+    } else {
+      answers[field.name] = field.value;
+    }
+  });
 }
 
 function validateCurrentPage() {
-const fields = questionCard.querySelectorAll("input, select, textarea");
+  const fields = questionCard.querySelectorAll(
+    "input, select, textarea"
+  );
 
-for (const field of fields) {
-if (!field.checkValidity()) {
-field.reportValidity();
-return false;
-}
-}
+  for (const field of fields) {
+    if (!field.checkValidity()) {
+      field.reportValidity();
+      return false;
+    }
+  }
 
-return true;
+  return true;
 }
 
 nextBtn.addEventListener("click", () => {
-if (!validateCurrentPage()) return;
+  if (!validateCurrentPage()) {
+    return;
+  }
 
-saveCurrentPage();
-currentPage++;
-renderPage();
-window.scrollTo({ top: 0, behavior: "smooth" });
+  saveCurrentPage();
+  currentPage++;
+  renderPage();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });
 
 backBtn.addEventListener("click", () => {
-saveCurrentPage();
-currentPage--;
-renderPage();
-window.scrollTo({ top: 0, behavior: "smooth" });
+  saveCurrentPage();
+  currentPage--;
+  renderPage();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });
 
-document.getElementById("surveyForm").addEventListener("submit", function(e) {
-e.preventDefault();
+document
+  .getElementById("surveyForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-if (!validateCurrentPage()) return;
+    if (!validateCurrentPage()) {
+      return;
+    }
 
-saveCurrentPage();
+    saveCurrentPage();
 
-message.textContent = "Submitting...";
+    message.textContent = "Submitting...";
 
-fetch(scriptURL, {
-method: "POST",
-mode: "no-cors",
-body: JSON.stringify(answers)
-})
-.then(() => {
-document.getElementById("surveyForm").innerHTML = `
-<div style="text-align:center; padding:60px 20px;">
-<h1 style="color:#4b2e83;">Thank You!</h1>
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
 
-<p style="font-size:20px;">
-Your response has been successfully submitted.
-</p>
+    fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(answers)
+    })
+      .then(() => {
+        document.getElementById("surveyForm").innerHTML = `
+          <div style="text-align:center; padding:60px 20px;">
+            <h1 style="color:#4b2e83;">Thank You!</h1>
 
-<p>
-Thank you for taking the time to provide feedback.
-Your input will help guide future OQI efforts.
-</p>
+            <p style="font-size:20px;">
+              Your response has been successfully submitted.
+            </p>
 
-<button onclick="location.reload()">
-Submit Another Response
-</button>
-</div>
-`;
+            <p>
+              Thank you for taking the time to provide feedback.
+              Your input will help the Office of Quality Improvement
+              improve future sessions.
+            </p>
 
-window.scrollTo({ top: 0, behavior: "smooth" });
-})
-.catch(error => {
-message.textContent = "There was an error submitting the survey. Please try again.";
-console.error("Error:", error);
-});
-});
+            <button type="button" onclick="location.reload()">
+              Submit Another Response
+            </button>
+          </div>
+        `;
 
-renderPage();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      })
+      .catch((error) => {
+        message.textContent =
+          "There was an error submitting the survey. Please try again.";
 
-document.getElementById("beginSurveyBtn").addEventListener("click", () => {
-document.getElementById("introPage").style.display = "none";
-document.getElementById("surveyForm").style.display = "block";
-renderPage();
-window.scrollTo({ top: 0, behavior: "smooth" });
-});
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Survey";
+
+        console.error("Error:", error);
+      });
+  });
+
+document
+  .getElementById("beginSurveyBtn")
+  .addEventListener("click", () => {
+    document.getElementById("introPage").style.display = "none";
+    document.getElementById("surveyForm").style.display = "block";
+
+    currentPage = 0;
+    renderPage();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+
+
+
+
+
+
+
