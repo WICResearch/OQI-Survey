@@ -58,47 +58,13 @@ const pages = [
   },
 
   {
-    title: "Welcome and OQI Overview",
-    subtitle:
-      "OQI Purpose, Mission, Values, Agenda, and Consensus Decision-Making",
-    description: "Please rate the following statements about this session.",
-    fields: [
-      {
-        type: "scale",
-        name: "welcomePresenterClear",
-        label: "Presenter communicated clearly."
-      },
-      {
-        type: "scale",
-        name: "welcomeOrganized",
-        label: "Session was well organized."
-      },
-      {
-        type: "scale",
-        name: "welcomeGoodUseOfTime",
-        label: "Session was a good use of my time."
-      },
-      {
-        type: "scale",
-        name: "welcomeEasyToFollow",
-        label: "Session was easy to follow."
-      },
-      {
-        type: "textarea",
-        name: "welcomeSuggestions",
-        heading: "Suggestions",
-        label: "What suggestions do you have for improving this session?"
-      }
-    ]
-  },
-
-  {
     title: "Policy Update",
     topics: [
-      "Policy 1.29 – Quality Improvement Local Agency Responsibilities",
-      "Foster Care Change of Custody",
-      "Miscarriage Letters",
-      "Policy 1.16"
+      "Policy 1.10",
+      "Policy 1.08",
+      "Policy 1.25",
+      "Policy 2.14",
+      "Policy 2.06"
     ],
     description: "Please rate the following statements about this session.",
     fields: [
@@ -132,14 +98,11 @@ const pages = [
   },
 
   {
-    title: "Funding Discussion",
+    title: "SOW Real World Application / Masimo & Grant Award",
     topics: [
-      "Spend-Down Options",
-      "WIC Tents and WICI Funding",
-      "WICI 2026 Masimo Pilot",
-      "FY2027 Funding",
-      "Overview of Projections",
-      "Operations Grants Administration"
+      "SOW Real World Application",
+      "Masimo",
+      "Grant Award"
     ],
     description: "Please rate the following statements about this session.",
     fields: [
@@ -175,8 +138,11 @@ const pages = [
   {
     title: "Local Operations",
     topics: [
-      "Lead Testing Expansion",
-      "Mental Health Certification Expansion"
+      "Aetna Pilot",
+      "Women’s Recovery Centers: Overview of WIC’s role",
+      "Women’s Recovery Centers: Opportunities",
+      "Women’s Recovery Centers: How to initiate and locations in your region",
+      "Baby and Me Tobacco Free"
     ],
     description: "Please rate the following statements about this session.",
     fields: [
@@ -278,7 +244,8 @@ function renderPage() {
   progressFill.style.width =
     `${((currentPage + 1) / pages.length) * 100}%`;
 
-  backBtn.style.display = currentPage === 0 ? "none" : "inline-block";
+  backBtn.style.display =
+    currentPage === 0 ? "none" : "inline-block";
 
   nextBtn.style.display =
     currentPage === pages.length - 1 ? "none" : "inline-block";
@@ -451,7 +418,8 @@ document
             <h1>Thank You!</h1>
 
             <p class="thank-you-lead">
-              Thank you for completing the October 20, 2026 WV WIC OQI Day 1 Evaluation.
+              Thank you for completing the October 20, 2026
+              WV WIC OQI Day 1 Evaluation.
             </p>
 
             <p>
