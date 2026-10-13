@@ -451,7 +451,7 @@ document
             <h1>Thank You!</h1>
 
             <p class="thank-you-lead">
-              Thank you for completing the 2026 WV WIC OQI Day 1 Evaluation.
+              Thank you for completing the October 20, 2026 WV WIC OQI Day 1 Evaluation.
             </p>
 
             <p>
