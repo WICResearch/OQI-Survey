@@ -64,7 +64,7 @@ const pages = [
       "Policy 1.08",
       "Policy 1.25",
       "Policy 2.14",
-      "Policy 2.06"
+      "Policy 3.09"
     ],
     description: "Please rate the following statements about this session.",
     fields: [
@@ -415,7 +415,7 @@ document
           <div class="thank-you-card">
             <div class="thank-you-icon">✓</div>
 
-            <h1>Thank You!</h1>
+            <h1>Thank You!</h1>\n            <p>Your response was sent. Please note that receipt by Google Sheets cannot be confirmed automatically.</p>
 
             <p class="thank-you-lead">
               Thank you for completing the October 20, 2026
